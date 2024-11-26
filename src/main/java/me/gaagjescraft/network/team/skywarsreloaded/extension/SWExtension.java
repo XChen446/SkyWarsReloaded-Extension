@@ -68,17 +68,6 @@ public class SWExtension extends JavaPlugin implements Listener {
             return;
         }
 
-        try {
-            SkyWarsReloaded swr = SkyWarsReloaded.get();
-            if (!swr.extensionCompatCheck(this)) return;
-            if (!swr.isNewVersion()) return;
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Found SkyWarsReloaded, but not the updated version. The updated version is required to run this extension as it has" +
-                    " a lot of fixes and new features that are required for this plugin to run. You can get it here: https://www.spigotmc.org/resources/69436/");
-            Bukkit.getPluginManager().disablePlugin(this);
-            return;
-        }
-
         File f = new File(getDataFolder(), "config.yml");
         if (!f.exists()) {
             saveResource("config.yml", false);
